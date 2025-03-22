@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" thread-count="5" parallel="tests">
+    <listeners>
+        <listener class-name="org.Abc.utilities.extentReportUtilities"></listener>
+    </listeners>
+
+    <test name="Opencart edge">
+        <parameter name="browser" value="edge"></parameter>
+        <parameter name="os" value="windows"></parameter>
+        <classes>
+            <class name="org.Abc.testCases.customerRegistration"/>
+        </classes>
+    </test>
+    <test name="Opencart chrome">
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="os" value="windows"></parameter>
+        <classes>
+            <class name="org.Abc.testCases.customerRegistration"/>
+        </classes>
+    </test>
+    <test name="Opencart firefox">
+        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="os" value="windows"></parameter>
+        <classes>
+            <class name="org.Abc.testCases.customerRegistration"/>
+        </classes>
+    </test>
+</suite>

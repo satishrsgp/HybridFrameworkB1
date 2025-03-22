@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <groups>
+        <run>
+            <include name="sanity"/>
+           <!-- <include name="regression"/>-->
+           <!-- <include name="master"/>-->
+            <exclude name=""/>
+        </run>
+    </groups>
+
+    <listeners>
+        <listener class-name="org.Abc.utilities.extentReportUtilities"></listener>
+    </listeners>
+    <test name="Opencart Testing">
+        <parameter name="browser" value="edge"></parameter>
+        <classes>
+            <class name="org.Abc.testCases.customerRegistration"/>
+            <class name="org.Abc.testCases.loginTestCase"/>
+        </classes>
+    </test>
+</suite>

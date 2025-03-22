@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  # Selenium Hub
+  selenium-hub:
+    image: selenium/hub:latest
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"  # Expose Selenium Hub on port 4444
+    environment:
+      - GRID_BROWSER_TIMEOUT=60
+      - SE_EVENT_BUS_HOST=selenium-hub  # Set the Event Bus Host
+    networks:
+      - selenium-network
+
+  # Selenium Chrome Node
+  selenium-chrome:
+    image: selenium/node-chrome:latest
+    container_name: selenium-chrome
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB=http://selenium-hub:4444/grid/register
+      - SE_EVENT_BUS_HOST=selenium-hub  # Set the Event Bus Host
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+      - SCREEN_DEPTH=24
+    volumes:
+      - /dev/shm:/dev/shm  # Important for headless mode
+    networks:
+      - selenium-network
+
+  # Selenium Firefox Node
+  selenium-firefox:
+    image: selenium/node-firefox:latest
+    container_name: selenium-firefox
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB=http://selenium-hub:4444/grid/register
+      - SE_EVENT_BUS_HOST=selenium-hub  # Set the Event Bus Host
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+      - SCREEN_DEPTH=24
+    volumes:
+      - /dev/shm:/dev/shm  # Important for headless mode
+    networks:
+      - selenium-network
+
+networks:
+  selenium-network:
+    driver: bridge

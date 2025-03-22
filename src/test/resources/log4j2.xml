@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console Appender for logging to the console -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
+        </Console>
+
+        <!-- RollingFile Appender for logging to a file with rotation -->
+        <RollingFile name="RollingFile" fileName="logs/automation.log"
+                     filePattern="logs/automation-%d{yyyy-MM-dd}-%i.log">
+            <!-- Define the log format -->
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable</Pattern>
+            </PatternLayout>
+
+            <!-- Define the rotation policies -->
+            <Policies>
+                <!-- Rotate based on size -->
+                <SizeBasedTriggeringPolicy size="4KB"/>
+                <!-- Rotate based on time (daily rotation) -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- Root logger configuration: logs to console and rolling file -->
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
