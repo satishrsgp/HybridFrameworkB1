@@ -18,17 +18,22 @@ public class loginPage extends basePage {
     private WebElement passwordEle;
     @FindBy(xpath = "//button[normalize-space()='Login']")
     private WebElement btnloginEle;
+    @FindBy(xpath = "//div[@class='mb-3']//a[contains(text(),'Forgotten Password')]")
+    private WebElement forgottenPasswordele;
 
     //Actions
-    public void seteMailAddress(String eMailAddress){
+    public void seteMailAddress(String eMailAddress) {
         eMailAddressEle.sendKeys(eMailAddress);
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         passwordEle.sendKeys(password);
     }
 
-    public void clickOnLogin(){
+    public void clickOnLogin() {
         btnloginEle.click();
+    }
+    public void clickonforgotPasswordLink(){
+        forgottenPasswordele.click();
     }
 }
