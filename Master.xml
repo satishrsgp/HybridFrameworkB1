@@ -9,6 +9,7 @@
         <parameter name="os" value="windows"></parameter>
         <classes>
             <class name="org.Abc.testCases.customerRegistration"/>
+            <class name="org.Abc.testCases.CustomerRegistrationTest"/>
             <class name="org.Abc.testCases.loginTestCase"/>
             <class name="org.Abc.testCases.LoginDataProvider"/>
         </classes>
